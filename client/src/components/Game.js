@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import GameBoard from './GameBoard';
+import { GameStyle } from '../styles/Game';
 
 class Game extends Component {
   constructor(){
@@ -26,13 +28,34 @@ class Game extends Component {
     });
   }
 
+  _submitAnswer = (event, question) => {
+    event.preventDefault();
+    const answerGiven = event.target.answer.value;
+    const newState = {...this.state};
+
+    if(answerGiven === question.answer){
+      newState.points += question.value;
+    } else {
+      newState.points -= question.value;
+    }
+
+    const payload = {
+      points: newState.points
+    };
+    axios.put(`/api/game/${this.state.id}`, payload).then((res) => {
+      console.log("Successfully Updated")
+      this.setState(newState);
+    });
+  };
+
   render() {
     return (
-      <div>
+      <GameStyle>
         <h1>Jeopardy</h1>
         <h3>Hello {this.state.user}</h3>
         <h3>Points: {this.state.points}</h3>
-      </div>
+        <GameBoard submitAnswer={this._submitAnswer} categories={this.state.categories} />
+      </GameStyle>
     );
   }
 }

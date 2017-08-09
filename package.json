@@ -1,24 +1,28 @@
 {
-  "name": "fullstack-react-jeopardy",
+  "name": "inclass-fullstack-jeopardy",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "8.2.1"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"cd client && yarn start\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MikeNewm32/fullstack-react-jeopardy.git"
+    "url": "git+https://github.com/king0120/inclass-fullstack-jeopardy.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MikeNewm32/fullstack-react-jeopardy/issues"
+    "url": "https://github.com/king0120/inclass-fullstack-jeopardy/issues"
   },
-  "homepage": "https://github.com/MikeNewm32/fullstack-react-jeopardy#readme",
+  "homepage": "https://github.com/king0120/inclass-fullstack-jeopardy#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "concurrently": "^3.5.0",
