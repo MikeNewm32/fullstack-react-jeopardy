@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
     Game.find().then((games) => {
         res.json(games);
-    });
+    })
 });
 
 router.get("/:id", (req, res) => {
